@@ -1,0 +1,203 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>33bloxy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one centered contact card, big avatar mark on top, two full-width link rows below. */
+  :root {
+    --bg: #e9ecf5;
+    --card: #f9faff;
+    --fg: #14172b;
+    --muted: #5d6384;
+    --line: #d4d8ea;
+    --accent: #4b45e6;
+    --accent-fg: #ffffff;
+    --row: #eef0fa;
+    --row-hover: #e3e6f7;
+    --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+    --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d0f1e;
+      --card: #161934;
+      --fg: #eceefb;
+      --muted: #9298c0;
+      --line: #2a2e57;
+      --accent: #8a85ff;
+      --accent-fg: #0d0f1e;
+      --row: #1d2142;
+      --row-hover: #262b56;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f1e;
+    --card: #161934;
+    --fg: #eceefb;
+    --muted: #9298c0;
+    --line: #2a2e57;
+    --accent: #8a85ff;
+    --accent-fg: #0d0f1e;
+    --row: #1d2142;
+    --row-hover: #262b56;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    padding-inline: 16px;
+    padding-block: 24px;
+    display: grid;
+    place-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 400px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 32px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .mark {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: -0.04em;
+    display: grid;
+    place-items: center;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 12vw, 52px);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+  .sub {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--row);
+    color: var(--fg);
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .link:hover { background: var(--row-hover); transform: translateY(-1px); }
+  .link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .ico {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+  }
+  .ico svg { width: 22px; height: 22px; display: block; }
+  .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 12.5px;
+    overflow-wrap: anywhere;
+  }
+  .go { flex: none; color: var(--muted); width: 20px; height: 20px; }
+  .link:hover .go { color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link { transition: none; }
+    .link:hover { transform: none; }
+  }
+</style>
+
+<main class="card">
+  <header class="head">
+    <div class="mark" aria-hidden="true">33</div>
+    <h1>33bloxy</h1>
+    <p class="sub">Find me here</p>
+  </header>
+
+  <nav class="links" aria-label="Contact links">
+    <a class="link" href="https://discord.com/users/1247973013555777559" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+      </span>
+      <span class="txt">
+        <span class="name">Discord</span>
+        <span class="hint">Tap to open a DM with me</span>
+      </span>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+
+    <a class="link" href="https://www.instagram.com/33bloxy/" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+      </span>
+      <span class="txt">
+        <span class="name">Instagram</span>
+        <span class="hint">@33bloxy</span>
+      </span>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+
+    <a class="link" href="https://www.google.com" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 13h18"/></svg>
+      </span>
+      <span class="txt">
+        <span class="name">Portfolio</span>
+        <span class="hint">See my work</span>
+      </span>
+      <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+  </nav>
+</main>
+
+</body></html>
